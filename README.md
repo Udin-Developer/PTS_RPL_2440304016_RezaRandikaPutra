@@ -10,7 +10,7 @@
 - **Ruang Lingkup Minimum:** Hasil tangkap, jenis/volume, lokasi/waktu, pengguna pencatat, dan rekap.
 - **Digit kedua dari belakang:** 1 -> **Constraint Wajib:** Waktu respons fungsi utama maksimal 3 detik ($X = 3$ detik).
 - **Perhitungan Nilai P:** $P = 100 + 16 = 116$ pengguna aktif secara bersamaan (*concurrent active users*).
-- **Link Video YouTube (Unlisted):** [https://youtu.be/GANTI_DENGAN_LINK_VIDEO_ANDA](https://youtu.be/GANTI_DENGAN_LINK_VIDEO_ANDA)
+- **Link Video YouTube (Unlisted):** [https://youtu.be/GcSZCQipVoE]
 
 ## Struktur Repository
 ```text
