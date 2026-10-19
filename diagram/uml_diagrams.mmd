@@ -1,0 +1,62 @@
+# Kode Sumber Diagram UML (Mermaid) - NIM 2440304016
+
+```mermaid
+classDiagram
+    class PenggunaPencatat {
+        -String idPengguna
+        -String namaLengkap
+        -String peran
+        -String passwordHash
+        +login(user, pass) Token
+        +verifikasiAkses() Boolean
+    }
+    class CatatanTangkap {
+        -String idCatatan
+        -String idPengguna
+        -String namaKapal
+        -DateTime waktuTangkap
+        -Float totalVolumeKg
+        -String statusVerifikasi
+        +hitungTotalVolume() Float
+        +validasiData() Boolean
+    }
+    class DetailJenisIkan {
+        -String idDetail
+        -String idCatatan
+        -String kodeSpesies
+        -String namaIkan
+        -Float volumeKg
+        +tambahItemIkan() Void
+        +ubahVolume(kg) Boolean
+    }
+    class LokasiTangkap {
+        -String idLokasi
+        -String kodeWPP
+        -String namaPelabuhanTPI
+        -Float koordinatLintang
+        -Float koordinatBujur
+        +validasiZonaTangkap() Boolean
+        +getFormatLokasi() String
+    }
+    class CatchRecordRepository {
+        -ConnectionPool dbPool
+        -InMemoryCache cacheClient
+        +save(catatan) Boolean
+        +findById(id) CatatanTangkap
+        +findByPeriode(tgl) List
+        +getCachedSummary() Rekap
+    }
+    class RekapLaporanService {
+        -String idRekap
+        -Date periodeAwal
+        -Date periodeAkhir
+        -Float totalTangkapanKg
+        +generateRekap() Object
+        +eksporLaporanCSV() File
+    }
+    PenggunaPencatat "1" --> "0..*" CatatanTangkap : mencatat
+    CatatanTangkap "1" *-- "1..*" DetailJenisIkan : terdiri atas
+    LokasiTangkap "1" --> "0..*" CatatanTangkap : berlokasi di
+    CatchRecordRepository ..> CatatanTangkap : persists
+    RekapLaporanService --> CatchRecordRepository : uses
+```
